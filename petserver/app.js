@@ -79,6 +79,8 @@ module.exports = function (app,db) {
         var name = req.query.name;
         var breed = req.query.breed;
         console.log(name,breed);
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.contentType('application/json');
         db.all("SELECT * FROM pets WHERE name = ? AND breed = ?", name, breed, function (err, row) {
             if (err) {

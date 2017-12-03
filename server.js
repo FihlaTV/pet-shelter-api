@@ -1,7 +1,8 @@
 // Create Express instance
 var express = require('express');
+var cors = require('cors');
 var app = express();
-
+app.use(cors());
 // Add Body-Parser to parse post parameters
 var bodyParser = require('body-parser')
 app.use(bodyParser.json());

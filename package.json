@@ -1,12 +1,13 @@
 {
-    "name":"petserver",
-    "version":"1.0.0",
-    "author":"Vyshaal Narayanam",
-    "dependencies": {
-        "body-parser": "^1.16.1",
-        "express":"~4.14.1",
-        "sqlite3":"3.1.13"
-    },
-    "main":"server.js",
-    "description":"Server for creating and storing the pets"
+  "name": "petserver",
+  "version": "1.0.0",
+  "author": "Vyshaal Narayanam",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "cors": "^2.8.4",
+    "express": "~4.14.1",
+    "sqlite3": "3.1.13"
+  },
+  "main": "server.js",
+  "description": "Server for creating and storing the pets"
 }
