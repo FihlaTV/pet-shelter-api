@@ -54,13 +54,20 @@ module.exports = function (app,db) {
         var location = req.body.location;
         var latitude = req.body.latitude;
         var longitude = req.body.longitude;
+        if (!validLatitude(latitude)) {
+            res.json(createError('Invalid latitude ' + latitude));
+            return;
+        }
+        if (!validLongitude(longitude)) {
+            res.json(createError('Invalid longitude ' + longitude));
+            return;
+        }
         // Add new pet
         db.run("INSERT INTO pets (name, type, breed, location, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?)", name, type, breed, location, latitude, longitude, function (err, row) {
             if (err) {
-                res.send(createError(err));
+                res.send(err);
             } else {
-                console.log(row);
-                res.send(createResponse(row));
+                res.send({'success': true});
             }
         });
     }
@@ -88,5 +95,13 @@ module.exports = function (app,db) {
 
     function createError(err) {
         return {'success': false, 'error': err}
+    }
+
+    function validLatitude(x) {
+        return -90 <= x && x <= 90;
+    }
+
+    function validLongitude(x) {
+        return -180 <= x && x <= 180;
     }
 }
