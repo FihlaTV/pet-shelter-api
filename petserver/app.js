@@ -18,7 +18,7 @@ module.exports = function (app,db) {
     function findPets(req,res) {
         var pets = [];
         res.contentType('application/json');
-        db.all("SELECT id as id, name as name, type as type, breed as breed FROM pets",
+        db.all("SELECT * FROM pets",
             function (err, rows) {
                 if (err) {
                     res.send(createError(err));
@@ -54,11 +54,13 @@ module.exports = function (app,db) {
         var location = req.body.location;
         var latitude = req.body.latitude;
         var longitude = req.body.longitude;
-        if (!validLatitude(latitude)) {
+        // verify whether latitude is valid
+        if (!validLatitude(parseFloat(latitude))) {
             res.json(createError('Invalid latitude ' + latitude));
             return;
         }
-        if (!validLongitude(longitude)) {
+        // verify whether longitude is valid
+        if (!validLongitude(parseFloat(longitude))) {
             res.json(createError('Invalid longitude ' + longitude));
             return;
         }
