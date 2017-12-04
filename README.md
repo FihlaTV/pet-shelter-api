@@ -9,7 +9,7 @@ $cd /pet-shelter-api
 $npm install
 $npm start
 ``` 
-The server will be launched at port `3000`, go to `http://localhost:3000/pets`.
+The server will be launched at port `3000`, go to `http://localhost:3000/api`.
 
 
 The API details are listed below. 
